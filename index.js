@@ -25,7 +25,7 @@ mongoose.connect(process.env.DataBaseUrl, { useNewUrlParser: true, useUnifiedTop
 
 app.post('/register', (req, res) => {
     const body = req.body;
-    if(body.name || body.email || body.password){
+    if(body.name && body.email && body.password){
         bcrypt.hash(body.password, 10).then(encryptedData => {
             const userDetail = new userModel({
                 name: body.name,
